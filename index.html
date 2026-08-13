@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mayank Kumar | Network Marketing Leader & AWPL Entrepreneur</title>
+<meta name="description" content="Mayank Kumar — AWPL Diamond Leader, Network Marketing Mentor, and Financial Freedom Coach based in India."/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        fontFamily: { "headline": ["Plus Jakarta Sans"], "body": ["Manrope"] }
+      }
+    }
+  }
+</script>
+<style>
+  /* ─── DESIGN TOKENS ─────────────────────────────────────── */
+  :root {
+    /* Light mode */
+    --bg:           #f9f6ef;
+    --bg-card:      #ffffff;
+    --bg-card-2:    #f3ede0;
+    --bg-card-3:    #ece6d8;
+    --border:       rgba(180,140,40,0.18);
+    --border-hover: rgba(180,140,40,0.45);
+    --primary:      #c9a227;
+    --primary-text: #7a5c00;
+    --on-primary:   #ffffff;
+    --text-1:       #1a1611;
+    --text-2:       #4a3f28;
+    --text-3:       #7a6e58;
+    --nav-bg:       rgba(249,246,239,0.88);
+    --badge-bg:     rgba(201,162,39,0.12);
+    --badge-border: rgba(201,162,39,0.3);
+    --accent-blue:  #1e3a8a;
+    --accent-blue-bg: rgba(30,58,138,0.1);
+    --stat-alt-bg:  #1e3a8a;
+    --stat-alt-text:#dde4ff;
+    --chip-bg:      #ff9961;
+    --chip-text:    #4a1b0c;
+    --whatsapp:     #25D366;
+    --shadow:       0 4px 24px rgba(0,0,0,0.08);
+    --shadow-lg:    0 8px 40px rgba(0,0,0,0.12);
+  }
+  .dark {
+    --bg:           #131313;
+    --bg-card:      #201f1f;
+    --bg-card-2:    #1c1b1b;
+    --bg-card-3:    #2a2a2a;
+    --border:       rgba(242,202,80,0.15);
+    --border-hover: rgba(242,202,80,0.4);
+    --primary:      #f2ca50;
+    --primary-text: #f2ca50;
+    --on-primary:   #3c2f00;
+    --text-1:       #e5e2e1;
+    --text-2:       #d0c5af;
+    --text-3:       #99907c;
+    --nav-bg:       rgba(19,19,19,0.85);
+    --badge-bg:     rgba(242,202,80,0.10);
+    --badge-border: rgba(242,202,80,0.25);
+    --accent-blue:  #b8c4ff;
+    --accent-blue-bg: rgba(23,59,171,0.2);
+    --stat-alt-bg:  #173bab;
+    --stat-alt-text:#a0b1ff;
+    --chip-bg:      #ff9961;
+    --chip-text:    #552100;
+    --whatsapp:     #25D366;
+    --shadow:       0 4px 24px rgba(0,0,0,0.4);
+    --shadow-lg:    0 8px 48px rgba(0,0,0,0.6);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text-1);
+    font-family: 'Manrope', sans-serif;
+    transition: background 0.35s ease, color 0.35s ease;
+  }
+  /* Cards */
+  .card { background: var(--bg-card); border: 1px solid var(--border); transition: border-color 0.2s, background 0.35s; }
+  .card:hover { border-color: var(--border-hover); }
+  .card-2 { background: var(--bg-card-2); }
+  .card-3 { background: var(--bg-card-3); }
+  /* Text helpers */
+  .t1 { color: var(--text-1); }
+  .t2 { color: var(--text-2); }
+  .t3 { color: var(--text-3); }
+  .tp { color: var(--primary); }
+  /* Badge */
+  .badge { background: var(--badge-bg); border: 1px solid var(--badge-border); color: var(--primary); font-size:11px; font-weight:700; letter-spacing:.1em; padding:5px 14px; border-radius:999px; display:inline-block; text-transform:uppercase; }
+  /* Section label */
+  .sec-label { background: var(--badge-bg); border: 1px solid var(--badge-border); color: var(--primary); font-size:10px; font-weight:700; letter-spacing:.15em; padding:4px 12px; border-radius:999px; display:inline-block; text-transform:uppercase; margin-bottom:1.25rem; }
+  /* Nav */
+  nav { background: var(--nav-bg); border-bottom: 1px solid var(--border); backdrop-filter: blur(14px); transition: background 0.35s; }
+  /* Primary button */
+  .btn-primary { background: var(--primary); color: var(--on-primary); font-weight:700; border-radius:8px; transition: transform .2s, box-shadow .2s; }
+  .btn-primary:hover { transform: scale(1.04); box-shadow: 0 6px 24px color-mix(in srgb, var(--primary) 30%, transparent); }
+  /* Ghost button */
+  .btn-ghost { background: var(--bg-card); color: var(--text-1); border: 1px solid var(--border); font-weight:700; border-radius:8px; transition: background .2s, border-color .2s; }
+  .btn-ghost:hover { background: var(--bg-card-3); border-color: var(--border-hover); }
+  /* Toggle buttons */
+  .toggle-pill { display:flex; align-items:center; gap:6px; padding:6px 14px; border-radius:999px; border:1px solid var(--border); background: var(--bg-card); color: var(--text-2); font-size:12px; font-weight:700; cursor:pointer; transition: all .2s; white-space:nowrap; }
+  .toggle-pill:hover { border-color: var(--border-hover); color: var(--primary); background: var(--bg-card-3); }
+  /* Divider line */
+  .divider { border:none; border-top:1px solid var(--border); }
+  /* Skill bar track */
+  .skill-track { height:8px; background: var(--bg-card-2); border-radius:999px; overflow:hidden; }
+  .skill-fill { height:100%; background: var(--primary); border-radius:999px; }
+  /* Timeline line */
+  .tl-line { position:absolute; left:18px; top:0; bottom:0; width:1px; background: color-mix(in srgb, var(--primary) 25%, transparent); }
+  /* FAQ */
+  .faq-icon { transition: transform 0.3s; }
+  /* Mobile menu */
+  #mobile-menu { display:none; }
+  #mobile-menu.open { display:flex; }
+  #hamburger.open .bar1 { transform: rotate(45deg) translate(5px,5px); }
+  #hamburger.open .bar2 { opacity:0; }
+  #hamburger.open .bar3 { transform: rotate(-45deg) translate(5px,-5px); }
+  .bar1,.bar2,.bar3 { display:block; width:22px; height:2px; background:var(--primary); margin:4px 0; transition:.3s; border-radius:2px; }
+  /* Nebula */
+  .nebula { background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--accent-blue) 12%, transparent) 0%, color-mix(in srgb, var(--primary) 5%, transparent) 55%, transparent 100%); }
+  /* Stat card alt (blue) */
+  .stat-alt { background: var(--stat-alt-bg); color: var(--stat-alt-text); }
+  /* Chip */
+  .chip { background: var(--chip-bg); color: var(--chip-text); padding:6px 18px; border-radius:999px; font-size:12px; font-weight:700; display:inline-block; }
+  /* Social icon btn */
+  .social-btn { width:44px; height:44px; border-radius:10px; background:var(--bg-card); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--text-3); transition:all .2s; }
+  .social-btn:hover { color:var(--primary); background:var(--bg-card-3); border-color:var(--border-hover); }
+  /* Contact icon row */
+  .contact-icon { width:44px; height:44px; flex-shrink:0; border-radius:50%; background:var(--bg-card); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color:var(--primary); transition:all .2s; }
+  a:hover .contact-icon { background:var(--primary); color:var(--on-primary); border-color:var(--primary); }
+  /* Material icon size fix */
+  .material-symbols-outlined { font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; }
+  /* Scrollbar (dark) */
+  .dark ::-webkit-scrollbar { width:6px; } .dark ::-webkit-scrollbar-track { background:#1a1a1a; } .dark ::-webkit-scrollbar-thumb { background:#f2ca50; border-radius:3px; }
+  /* Animate */
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)} }
+  .fade-up { animation:fadeUp .65s ease both; }
+  /* Light mode specific tweaks */
+  :not(.dark) .stat-primary { box-shadow: 0 8px 32px color-mix(in srgb, var(--primary) 20%, transparent); }
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav class="fixed top-0 w-full z-50 transition-all duration-300">
+  <div class="flex justify-between items-center max-w-7xl mx-auto px-5 sm:px-8 h-16 sm:h-20">
+    <!-- Logo -->
+    <div class="font-headline text-xl sm:text-2xl font-black tracking-tighter tp">THE❤️MAYANK</div>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center space-x-5 lg:space-x-6 font-headline font-bold text-sm lg:text-base">
+      <a class="tp border-b-2 border-current pb-0.5" href="#home" data-en="Home" data-hi="होम">Home</a>
+      <a class="t2 hover:tp transition-colors" href="#about" data-en="About" data-hi="परिचय">About</a>
+      <a class="t2 hover:tp transition-colors" href="#awpl" data-en="AWPL" data-hi="AWPL">AWPL</a>
+      <a class="t2 hover:tp transition-colors" href="#journey" data-en="Journey" data-hi="सफर">Journey</a>
+      <a class="t2 hover:tp transition-colors" href="#services" data-en="Services" data-hi="सेवाएं">Services</a>
+      <a class="t2 hover:tp transition-colors" href="#achievements" data-en="Results" data-hi="उपलब्धियां">Results</a>
+      <a class="t2 hover:tp transition-colors" href="#testimonials" data-en="Stories" data-hi="अनुभव">Stories</a>
+      <a class="t2 hover:tp transition-colors" href="#contact" data-en="Contact" data-hi="संपर्क">Contact</a>
+    </div>
+
+    <!-- Controls -->
+    <div class="flex items-center gap-2 sm:gap-3">
+      <!-- Lang toggle -->
+      <button class="toggle-pill" onclick="toggleLang()" id="lang-btn" title="Switch language">
+        <span class="material-symbols-outlined" style="font-size:16px">translate</span>
+        <span id="lang-label">हिंदी</span>
+      </button>
+      <!-- Dark/light toggle -->
+      <button class="toggle-pill" onclick="toggleTheme()" id="theme-btn" title="Switch theme">
+        <span class="material-symbols-outlined" style="font-size:16px" id="theme-icon">light_mode</span>
+        <span id="theme-label" class="hidden sm:inline">Light</span>
+      </button>
+      <!-- Join CTA -->
+      <a class="hidden sm:inline-flex btn-primary px-4 py-2.5 text-sm" href="#contact" data-en="Join Now" data-hi="जुड़ें">Join Now</a>
+      <!-- Hamburger -->
+      <button id="hamburger" class="md:hidden p-2 rounded-md" onclick="toggleMenu()">
+        <span class="bar1"></span><span class="bar2"></span><span class="bar3"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden flex-col border-t" style="background:var(--bg-card);border-color:var(--border);">
+    <div class="px-5 py-3 space-y-1">
+      <a class="block py-3 px-4 tp font-bold font-headline border-b" style="border-color:var(--border)" href="#home" onclick="toggleMenu()" data-en="Home" data-hi="होम">Home</a>
+      <a class="block py-3 px-4 t2 font-bold font-headline hover:tp transition-colors border-b" style="border-color:var(--border)" href="#about" onclick="toggleMenu()" data-en="About Me" data-hi="मेरे बारे में">About Me</a>
+      <a class="block py-3 px-4 t2 font-bold font-headline hover:tp transition-colors border-b" style="border-color:var(--border)" href="#awpl" onclick="toggleMenu()" data-en="What is AWPL" data-hi="AWPL क्या है">What is AWPL</a>
+      <a class="block py-3 px-4 t2 font-bold font-headline hover:tp transition-colors border-b" style="border-color:var(--border)" href="#journey" onclick="toggleMenu()" data-en="My Journey" data-hi="मेरा सफर">My Journey</a>
+      <a class="block py-3 px-4 t2 font-bold font-headline hover:tp transition-colors border-b" style="border-color:var(--border)" href="#services" onclick="toggleMenu()" data-en="Services" data-hi="सेवाएं">Services</a>
+      <a class="block py-3 px-4 t2 font-bold font-headline hover:tp transition-colors border-b" style="border-color:var(--border)" href="#achievements" onclick="toggleMenu()" data-en="Results" data-hi="उपलब्धियां">Results</a>
+      <a class="block py-3 px-4 t2 font-bold font-headline hover:tp transition-colors border-b" style="border-color:var(--border)" href="#testimonials" onclick="toggleMenu()" data-en="Success Stories" data-hi="सफलता की कहानियां">Success Stories</a>
+      <a class="block py-3 px-4 t2 font-bold font-headline hover:tp transition-colors" href="#contact" onclick="toggleMenu()" data-en="Contact" data-hi="संपर्क">Contact</a>
+      <div class="pt-3 pb-1">
+        <a class="block w-full text-center btn-primary py-3" href="#contact" onclick="toggleMenu()" data-en="Join the Network" data-hi="नेटवर्क से जुड़ें">Join the Network</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══ HERO ═══ -->
+<section class="nebula relative min-h-screen flex items-center pt-16 sm:pt-20 overflow-hidden" id="home">
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none hidden md:block" style="border:1px solid color-mix(in srgb, var(--primary) 8%, transparent)"></div>
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 w-full py-14 sm:py-20">
+    <div class="flex flex-col-reverse md:grid md:grid-cols-12 gap-10 md:gap-14 items-center">
+
+      <!-- Text -->
+      <div class="md:col-span-7 z-10 text-center md:text-left fade-up">
+        <span class="badge mb-5" data-en="🏆 AWPL Diamond Circle Leader" data-hi="🏆 AWPL डायमंड सर्किल लीडर">🏆 AWPL Diamond Circle Leader</span>
+        <h1 class="font-headline text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] font-extrabold tracking-tighter leading-[1.05] mb-5 t1">
+          <span data-en="I Help Ordinary People Build" data-hi="मैं सामान्य लोगों को बनाता हूँ">I Help Ordinary People Build</span>
+          <span class="tp"> <span data-en="Extraordinary" data-hi="असाधारण">Extraordinary</span></span>
+          <span data-en=" Income" data-hi=" आय"> Income</span>
+        </h1>
+        <p class="t2 text-base sm:text-lg max-w-xl mx-auto md:mx-0 mb-8 leading-relaxed">
+          <span data-en="Hi, I'm" data-hi="नमस्ते, मैं हूँ">Hi, I'm</span>
+          <strong class="t1"> Mayank Kumar</strong> —
+          <span data-en="a passionate Network Marketing leader with 3+ years in AWPL. I've helped 100+ people across India unlock financial freedom through a proven system of team-building, product belief, and personal growth." data-hi="एक उत्साही नेटवर्क मार्केटिंग लीडर जो 3+ वर्षों से AWPL में सक्रिय हैं। मैंने 100+ लोगों को भारत भर में वित्तीय स्वतंत्रता दिलाई है।">a passionate Network Marketing leader with 3+ years in AWPL. I've helped 100+ people across India unlock financial freedom through a proven system of team-building, product belief, and personal growth.</span>
+        </p>
+        <div class="flex flex-wrap gap-3 justify-center md:justify-start mb-8">
+          <span class="flex items-center gap-2 text-sm t3"><span style="width:8px;height:8px;border-radius:50%;background:#4ade80;display:inline-block"></span><span data-en="Active AWPL Diamond Leader" data-hi="सक्रिय AWPL डायमंड लीडर">Active AWPL Diamond Leader</span></span>
+          <span class="flex items-center gap-2 text-sm t3"><span style="width:8px;height:8px;border-radius:50%;background:var(--primary);display:inline-block"></span><span data-en="100+ Team Members" data-hi="100+ टीम सदस्य">100+ Team Members</span></span>
+          <span class="flex items-center gap-2 text-sm t3"><span style="width:8px;height:8px;border-radius:50%;background:var(--accent-blue);display:inline-block"></span><span data-en="Pan-India Network" data-hi="अखिल भारतीय नेटवर्क">Pan-India Network</span></span>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+          <a class="btn-primary px-7 py-3.5 text-base sm:text-lg text-center" href="#contact" data-en="Join My Team" data-hi="मेरी टीम से जुड़ें">Join My Team</a>
+          <a class="btn-ghost px-7 py-3.5 text-base sm:text-lg text-center" href="#journey" data-en="See My Story" data-hi="मेरी कहानी देखें">See My Story</a>
+        </div>
+      </div>
+
+      <!-- Image -->
+      <div class="md:col-span-5 w-full flex justify-center relative">
+        <div style="position:relative;width:min(300px,80vw);aspect-ratio:4/5;border-radius:16px;overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid var(--border);">
+          <img src="Instagram_20251231_8.jpg.jpeg" alt="Mayank Kumar AWPL Diamond Leader" style="width:100%;height:100%;object-fit:cover;filter:contrast(105%) brightness(102%) saturate(108%);transition:.6s ease;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'"/>
+          <div style="position:absolute;bottom:0;left:0;right:0;height:45%;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);"></div>
+          <div style="position:absolute;bottom:14px;left:14px;right:14px;">
+            <span class="badge" data-en="Diamond Circle Qualifier" data-hi="डायमंड सर्किल क्वालिफायर">Diamond Circle Qualifier</span>
+          </div>
+        </div>
+        <!-- Floating card -->
+        <div class="card absolute -bottom-4 -left-2 sm:-bottom-6 sm:-left-6 rounded-xl p-4 shadow-2xl hidden sm:block" style="box-shadow:var(--shadow-lg)">
+          <p class="font-headline text-2xl font-black tp">₹5L+</p>
+          <p class="t3 text-xs font-bold uppercase tracking-wider mt-0.5" data-en="Monthly Team Revenue" data-hi="मासिक टीम राजस्व">Monthly Team Revenue</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section class="py-16 sm:py-24 card-2" id="about" style="background:var(--bg-card-2)">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+      <div>
+        <span class="sec-label" data-en="Who I Am" data-hi="मैं कौन हूँ">Who I Am</span>
+        <h2 class="font-headline text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 leading-tight t1">
+          <span data-en="More Than a Marketer —" data-hi="सिर्फ मार्केटर नहीं —">More Than a Marketer —</span>
+          <span class="tp"> <span data-en="Movement Builder" data-hi="आंदोलन निर्माता">Movement Builder</span></span>
+        </h2>
+        <p class="t2 leading-relaxed mb-5 text-sm sm:text-base" data-en="My name is Mayank Kumar, and I come from a background where financial struggle was the norm. I watched my family work tirelessly for decades without ever achieving true financial freedom. That pain became my greatest motivator." data-hi="मेरा नाम मयंक कुमार है, और मैं उस पृष्ठभूमि से आता हूँ जहाँ आर्थिक संघर्ष सामान्य था। मैंने अपने परिवार को दशकों तक कठिन परिश्रम करते देखा लेकिन वे कभी सच्ची वित्तीय स्वतंत्रता नहीं पा सके। वह दर्द मेरी सबसे बड़ी प्रेरणा बना।">My name is Mayank Kumar, and I come from a background where financial struggle was the norm. I watched my family work tirelessly for decades without ever achieving true financial freedom. That pain became my greatest motivator.</p>
+        <p class="t2 leading-relaxed mb-5 text-sm sm:text-base" data-en="At just 22, I discovered AWPL — Asia's fastest-growing direct selling company. What started as curiosity became conviction. Within 3 years, I built a team of 100+ leaders across multiple Indian states, achieved Diamond Circle rank, and created a life on my own terms — while still completing my degree." data-hi="मात्र 22 साल की उम्र में, मैंने AWPL की खोज की — एशिया की सबसे तेजी से बढ़ती डायरेक्ट सेलिंग कंपनी। जो जिज्ञासा से शुरू हुआ, वह विश्वास बन गया। 3 वर्षों में, मैंने कई राज्यों में 100+ लोगों की टीम बनाई, डायमंड सर्किल रैंक हासिल की।">At just 22, I discovered AWPL — Asia's fastest-growing direct selling company. What started as curiosity became conviction. Within 3 years, I built a team of 100+ leaders across multiple Indian states, achieved Diamond Circle rank, and created a life on my own terms — while still completing my degree.</p>
+        <p class="t2 leading-relaxed mb-8 text-sm sm:text-base" data-en="Today I don't just build a business — I build people. My mission is to help every person on my team achieve the same sovereignty I found. Student, homemaker, or professional — I have a proven system that works for you." data-hi="आज मैं सिर्फ व्यवसाय नहीं बनाता — मैं लोगों को बनाता हूँ। मेरा मिशन है कि मेरी टीम का हर सदस्य उसी स्वतंत्रता को पाए जो मैंने पाई।">Today I don't just build a business — I build people. My mission is to help every person on my team achieve the same sovereignty I found. Student, homemaker, or professional — I have a proven system that works for you.</p>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="card p-4 rounded-xl">
+            <span class="material-symbols-outlined tp mb-2 block">emoji_objects</span>
+            <h4 class="font-headline font-bold text-sm mb-1 t1" data-en="Vision-Driven" data-hi="दूरदर्शी">Vision-Driven</h4>
+            <p class="t3 text-xs leading-relaxed" data-en="Long-term thinking over short-term gains, always." data-hi="हमेशा दीर्घकालिक सोच, न कि अल्पकालिक लाभ।">Long-term thinking over short-term gains, always.</p>
+          </div>
+          <div class="card p-4 rounded-xl">
+            <span class="material-symbols-outlined tp mb-2 block">favorite</span>
+            <h4 class="font-headline font-bold text-sm mb-1 t1" data-en="People-First" data-hi="लोग पहले">People-First</h4>
+            <p class="t3 text-xs leading-relaxed" data-en="I succeed only when my team succeeds." data-hi="मैं तभी सफल होता हूँ जब मेरी टीम सफल होती है।">I succeed only when my team succeeds.</p>
+          </div>
+          <div class="card p-4 rounded-xl">
+            <span class="material-symbols-outlined tp mb-2 block">verified</span>
+            <h4 class="font-headline font-bold text-sm mb-1 t1" data-en="Integrity" data-hi="ईमानदारी">Integrity</h4>
+            <p class="t3 text-xs leading-relaxed" data-en="100% honest about what this business can and cannot do." data-hi="इस व्यवसाय के बारे में 100% ईमानदार।">100% honest about what this business can and cannot do.</p>
+          </div>
+          <div class="card p-4 rounded-xl">
+            <span class="material-symbols-outlined tp mb-2 block">trending_up</span>
+            <h4 class="font-headline font-bold text-sm mb-1 t1" data-en="Growth Mindset" data-hi="विकास की सोच">Growth Mindset</h4>
+            <p class="t3 text-xs leading-relaxed" data-en="Daily learning, daily action, daily improvement." data-hi="रोज सीखना, रोज करना, रोज सुधरना।">Daily learning, daily action, daily improvement.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-5">
+        <div class="card rounded-2xl p-6">
+          <h3 class="font-headline text-lg font-bold mb-5 tp" data-en="Quick Facts" data-hi="त्वरित जानकारी">Quick Facts</h3>
+          <div class="space-y-4">
+            <div class="flex items-start gap-4 pb-4" style="border-bottom:1px solid var(--border)"><span class="material-symbols-outlined tp flex-shrink-0">location_on</span><div><p class="font-bold text-sm t1" data-en="Based In" data-hi="स्थान">Based In</p><p class="t2 text-sm" data-en="Ghaziabad, Uttar Pradesh, India" data-hi="गाजियाबाद, उत्तर प्रदेश, भारत">Ghaziabad, Uttar Pradesh, India</p></div></div>
+            <div class="flex items-start gap-4 pb-4" style="border-bottom:1px solid var(--border)"><span class="material-symbols-outlined tp flex-shrink-0">work</span><div><p class="font-bold text-sm t1" data-en="Role" data-hi="भूमिका">Role</p><p class="t2 text-sm" data-en="AWPL Diamond Leader & Network Marketing Mentor" data-hi="AWPL डायमंड लीडर और नेटवर्क मार्केटिंग मेंटर">AWPL Diamond Leader & Network Marketing Mentor</p></div></div>
+            <div class="flex items-start gap-4 pb-4" style="border-bottom:1px solid var(--border)"><span class="material-symbols-outlined tp flex-shrink-0">school</span><div><p class="font-bold text-sm t1" data-en="Education" data-hi="शिक्षा">Education</p><p class="t2 text-sm" data-en="B.Sc. (Hons.) — Graduated with Honors, 2025" data-hi="B.Sc. (ऑनर्स) — 2025 में सम्मान के साथ उत्तीर्ण">B.Sc. (Hons.) — Graduated with Honors, 2025</p></div></div>
+            <div class="flex items-start gap-4 pb-4" style="border-bottom:1px solid var(--border)"><span class="material-symbols-outlined tp flex-shrink-0">groups</span><div><p class="font-bold text-sm t1" data-en="Team Size" data-hi="टीम का आकार">Team Size</p><p class="t2 text-sm" data-en="100+ active network leaders across India" data-hi="भारत भर में 100+ सक्रिय नेटवर्क लीडर">100+ active network leaders across India</p></div></div>
+            <div class="flex items-start gap-4 pb-4" style="border-bottom:1px solid var(--border)"><span class="material-symbols-outlined tp flex-shrink-0">language</span><div><p class="font-bold text-sm t1" data-en="Languages" data-hi="भाषाएं">Languages</p><p class="t2 text-sm" data-en="Hindi (Native), English (Professional)" data-hi="हिंदी (मातृभाषा), अंग्रेजी (व्यावसायिक)">Hindi (Native), English (Professional)</p></div></div>
+            <div class="flex items-start gap-4"><span class="material-symbols-outlined tp flex-shrink-0">interests</span><div><p class="font-bold text-sm t1" data-en="Interests" data-hi="रुचियाँ">Interests</p><p class="t2 text-sm" data-en="Leadership, Personal Finance, Motivational Speaking, Health & Wellness" data-hi="नेतृत्व, व्यक्तिगत वित्त, प्रेरक वक्तव्य, स्वास्थ्य">Leadership, Personal Finance, Motivational Speaking, Health & Wellness</p></div></div>
+          </div>
+        </div>
+        <div class="rounded-2xl p-6" style="background:var(--badge-bg);border:1px solid var(--badge-border)">
+          <p class="t1 text-base sm:text-lg italic leading-relaxed font-medium" data-en='"I don\'t sell dreams — I sell a proven system and the belief that you are capable of far more than you think."' data-hi='"मैं सपने नहीं बेचता — मैं एक सिद्ध प्रणाली और यह विश्वास बेचता हूँ कि आप जितना सोचते हैं उससे कहीं ज्यादा करने में सक्षम हैं।"'>"I don't sell dreams — I sell a <span class="tp font-bold">proven system</span> and the belief that you are capable of far more than you think."</p>
+          <p class="tp font-bold text-sm mt-4">— Mayank Kumar</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AWPL ═══ -->
+<section class="py-16 sm:py-24" style="background:var(--bg)" id="awpl">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="sec-label" style="background:var(--accent-blue-bg);border-color:color-mix(in srgb,var(--accent-blue) 30%,transparent);color:var(--accent-blue)" data-en="The Platform" data-hi="प्लेटफ़ॉर्म">The Platform</span>
+      <h2 class="font-headline text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 t1">
+        <span data-en="What is" data-hi="क्या है">What is</span> <span class="tp">AWPL?</span>
+      </h2>
+      <p class="t2 text-sm sm:text-base leading-relaxed" data-en="Asia's most trusted direct selling company — and the vehicle I used to build financial sovereignty." data-hi="एशिया की सबसे भरोसेमंद डायरेक्ट सेलिंग कंपनी — जिसने मुझे वित्तीय स्वतंत्रता दिलाई।">Asia's most trusted direct selling company — and the vehicle I used to build financial sovereignty.</p>
+    </div>
+    <div class="card rounded-2xl p-6 sm:p-10 mb-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h3 class="font-headline text-2xl sm:text-3xl font-bold mb-4 t1" data-en="Asclepius Wellness Pvt. Ltd." data-hi="एस्क्लेपियस वेलनेस प्रा. लि.">Asclepius Wellness Pvt. Ltd.</h3>
+          <p class="t2 leading-relaxed mb-4 text-sm sm:text-base" data-en="AWPL is a government-registered, ISO-certified direct selling company built on health, wellness, and financial empowerment. With 500+ products spanning Ayurvedic healthcare, nutraceuticals, personal care, and agro products, AWPL gives everyday people a genuine business backed by things people actually need and want." data-hi="AWPL एक सरकार-पंजीकृत, ISO-प्रमाणित डायरेक्ट सेलिंग कंपनी है जो स्वास्थ्य, कल्याण और वित्तीय सशक्तिकरण पर बनी है। 500+ उत्पादों के साथ, AWPL आम लोगों को एक असली व्यवसाय का मौका देती है।">AWPL is a government-registered, ISO-certified direct selling company built on health, wellness, and financial empowerment. With 500+ products spanning Ayurvedic healthcare, nutraceuticals, personal care, and agro products, AWPL gives everyday people a genuine business backed by things people actually need and want.</p>
+          <p class="t2 leading-relaxed text-sm sm:text-base" data-en="Unlike questionable MLM companies, AWPL's compensation plan is fully transparent, products are FSSAI & GMP certified, and the company has a proven track record of paying out thousands of crores in distributor earnings across India." data-hi="संदिग्ध MLM कंपनियों के विपरीत, AWPL की कमाई योजना पूरी तरह पारदर्शी है, उत्पाद FSSAI और GMP प्रमाणित हैं।">Unlike questionable MLM companies, AWPL's compensation plan is fully transparent, products are FSSAI & GMP certified, and the company has a proven track record of paying out thousands of crores in distributor earnings across India.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="card-3 p-5 rounded-xl text-center" style="background:var(--bg-card-3)"><p class="font-headline text-3xl font-black tp mb-1">2012</p><p class="t3 text-xs font-bold uppercase tracking-wider" data-en="Founded" data-hi="स्थापित">Founded</p></div>
+          <div class="card-3 p-5 rounded-xl text-center" style="background:var(--bg-card-3)"><p class="font-headline text-3xl font-black tp mb-1">500+</p><p class="t3 text-xs font-bold uppercase tracking-wider" data-en="Products" data-hi="उत्पाद">Products</p></div>
+          <div class="card-3 p-5 rounded-xl text-center" style="background:var(--bg-card-3)"><p class="font-headline text-3xl font-black tp mb-1">10L+</p><p class="t3 text-xs font-bold uppercase tracking-wider" data-en="Distributors" data-hi="वितरक">Distributors</p></div>
+          <div class="card-3 p-5 rounded-xl text-center" style="background:var(--bg-card-3)"><p class="font-headline text-2xl font-black tp mb-1" data-en="Pan India" data-hi="अखिल भारत">Pan India</p><p class="t3 text-xs font-bold uppercase tracking-wider" data-en="Presence" data-hi="उपस्थिति">Presence</p></div>
+        </div>
+      </div>
+    </div>
+    <h3 class="font-headline text-xl sm:text-2xl font-bold mb-6 text-center t1" data-en="Why I Chose AWPL Over Everything Else" data-hi="मैंने AWPL को सबसे ऊपर क्यों चुना">Why I Chose AWPL Over Everything Else</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+      <div class="card p-6 rounded-xl group" style="transition:background .2s,border-color .2s"><span class="material-symbols-outlined tp text-3xl mb-4 block" style="transition:transform .2s">health_and_safety</span><h4 class="font-headline font-bold text-base mb-2 t1" data-en="Real, Certified Products" data-hi="वास्तविक, प्रमाणित उत्पाद">Real, Certified Products</h4><p class="t2 text-sm leading-relaxed" data-en="AWPL's products are FSSAI, GMP, and ISO certified. I sell things I personally use and believe in 100%." data-hi="AWPL के उत्पाद FSSAI, GMP और ISO प्रमाणित हैं। मैं वही बेचता हूँ जो मैं खुद उपयोग करता हूँ।">AWPL's products are FSSAI, GMP, and ISO certified. I sell things I personally use and believe in 100%.</p></div>
+      <div class="card p-6 rounded-xl group"><span class="material-symbols-outlined tp text-3xl mb-4 block">account_balance</span><h4 class="font-headline font-bold text-base mb-2 t1" data-en="Transparent Income Plan" data-hi="पारदर्शी आय योजना">Transparent Income Plan</h4><p class="t2 text-sm leading-relaxed" data-en="Multiple income streams — retail profit, team commission, performance bonuses, and travel rewards. No hidden terms." data-hi="कई आय स्रोत — खुदरा लाभ, टीम कमीशन, प्रदर्शन बोनस और यात्रा पुरस्कार। कोई छुपी शर्त नहीं।">Multiple income streams — retail profit, team commission, performance bonuses, and travel rewards. No hidden terms.</p></div>
+      <div class="card p-6 rounded-xl group"><span class="material-symbols-outlined tp text-3xl mb-4 block">phone_android</span><h4 class="font-headline font-bold text-base mb-2 t1" data-en="Digital-First Business" data-hi="डिजिटल-फर्स्ट व्यवसाय">Digital-First Business</h4><p class="t2 text-sm leading-relaxed" data-en="Run your entire business from your smartphone. No inventory, no office, no employees required." data-hi="अपना पूरा व्यवसाय स्मार्टफोन से चलाएं। कोई गोदाम, कोई ऑफिस, कोई कर्मचारी नहीं।">Run your entire business from your smartphone. No inventory, no office, no employees required.</p></div>
+      <div class="card p-6 rounded-xl group"><span class="material-symbols-outlined tp text-3xl mb-4 block">currency_rupee</span><h4 class="font-headline font-bold text-base mb-2 t1" data-en="Low Entry Investment" data-hi="कम शुरुआती निवेश">Low Entry Investment</h4><p class="t2 text-sm leading-relaxed" data-en="Start for a fraction of what a traditional business costs. Minimal risk, maximum upside potential." data-hi="पारंपरिक व्यवसाय की तुलना में बहुत कम में शुरू करें। न्यूनतम जोखिम, अधिकतम संभावना।">Start for a fraction of what a traditional business costs. Minimal risk, maximum upside potential.</p></div>
+      <div class="card p-6 rounded-xl group"><span class="material-symbols-outlined tp text-3xl mb-4 block">support_agent</span><h4 class="font-headline font-bold text-base mb-2 t1" data-en="World-Class Support" data-hi="विश्व स्तरीय सहायता">World-Class Support</h4><p class="t2 text-sm leading-relaxed" data-en="Company-provided training, national events, and leadership programs so you're never building alone." data-hi="कंपनी द्वारा प्रशिक्षण, राष्ट्रीय कार्यक्रम और नेतृत्व कार्यक्रम — आप कभी अकेले नहीं।">Company-provided training, national events, and leadership programs so you're never building alone.</p></div>
+      <div class="card p-6 rounded-xl group"><span class="material-symbols-outlined tp text-3xl mb-4 block">rocket_launch</span><h4 class="font-headline font-bold text-base mb-2 t1" data-en="Residual Income" data-hi="निष्क्रिय आय">Residual Income</h4><p class="t2 text-sm leading-relaxed" data-en="Build once, earn forever. As your team grows, your income grows — even while you sleep." data-hi="एक बार बनाएं, हमेशा कमाएं। टीम बढ़े तो आय बढ़े — सोते समय भी।">Build once, earn forever. As your team grows, your income grows — even while you sleep.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CHALLENGES ═══ -->
+<section class="py-16 sm:py-24" style="background:var(--bg-card-2)" id="challenges">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="mb-10 sm:mb-14">
+      <span class="sec-label" data-en="The Real Story" data-hi="असली कहानी">The Real Story</span>
+      <h2 class="font-headline text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 leading-tight t1">
+        <span data-en="Forged in the" data-hi="कठिनाइयों की">Forged in the</span> <span class="tp"><span data-en="Fire" data-hi="आग में">Fire</span></span> <span data-en="of Adversity" data-hi="तपकर निखरा हूँ">of Adversity</span>
+      </h2>
+      <p class="t2 text-sm sm:text-base max-w-2xl" data-en="Nobody starts at the top. Here's the raw truth about what it actually took. I share this not for sympathy — but so you know: if I could do it, so can you." data-hi="कोई भी शीर्ष से शुरू नहीं करता। यह उसकी असली सच्चाई है जो वास्तव में लगी। मैं यह सहानुभूति के लिए नहीं — बल्कि इसलिए बताता हूँ: अगर मैं कर सकता हूँ, तो आप भी कर सकते हैं।">Nobody starts at the top. Here's the raw truth about what it actually took. I share this not for sympathy — but so you know: if I could do it, so can you.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      <div class="card p-6 sm:p-8 rounded-xl group"><div class="w-12 h-12 rounded-lg flex items-center justify-center mb-5 tp" style="background:var(--bg-card-3)"><span class="material-symbols-outlined text-2xl">payments</span></div><h3 class="font-headline text-lg font-bold mb-2 t1" data-en="Zero Capital Start" data-hi="शून्य पूंजी से शुरुआत">Zero Capital Start</h3><p class="t2 text-sm leading-relaxed" data-en="I started with barely ₹5,000 in savings. No investor, no loan, no safety net. Every purchase was a sacrifice. I learned to treat every rupee like a soldier treats ammunition — carefully and strategically." data-hi="मैंने मुश्किल से ₹5,000 की बचत के साथ शुरुआत की। कोई निवेशक नहीं, कोई ऋण नहीं, कोई सुरक्षा जाल नहीं। मैंने हर रुपए को एक सैनिक की तरह संभालना सीखा।">I started with barely ₹5,000 in savings. No investor, no loan, no safety net. Every purchase was a sacrifice. I learned to treat every rupee like a soldier treats ammunition — carefully and strategically.</p></div>
+      <div class="card p-6 sm:p-8 rounded-xl group"><div class="w-12 h-12 rounded-lg flex items-center justify-center mb-5 tp" style="background:var(--bg-card-3)"><span class="material-symbols-outlined text-2xl">diversity_1</span></div><h3 class="font-headline text-lg font-bold mb-2 t1" data-en="Family Doubt" data-hi="परिवार का संदेह">Family Doubt</h3><p class="t2 text-sm leading-relaxed" data-en="When I told people I was doing network marketing, I heard laughter, dismissal, even anger. My own relatives called it a scam. I had to protect my vision like it was the most precious thing I owned." data-hi="जब मैंने लोगों को बताया कि मैं नेटवर्क मार्केटिंग कर रहा हूँ, तो मुझे हँसी, अस्वीकृति, यहाँ तक कि गुस्से का सामना करना पड़ा। मेरे अपने रिश्तेदारों ने इसे धोखाधड़ी कहा।">When I told people I was doing network marketing, I heard laughter, dismissal, even anger. My own relatives called it a scam. I had to protect my vision like it was the most precious thing I owned.</p></div>
+      <div class="card p-6 sm:p-8 rounded-xl group"><div class="w-12 h-12 rounded-lg flex items-center justify-center mb-5 tp" style="background:var(--bg-card-3)"><span class="material-symbols-outlined text-2xl">public</span></div><h3 class="font-headline text-lg font-bold mb-2 t1" data-en='Society\'s "Safe Path"' data-hi='समाज का "सुरक्षित रास्ता"'>Society's "Safe Path"</h3><p class="t2 text-sm leading-relaxed" data-en="Everyone pushed me toward a government job or salaried position. But I kept asking: if I do what everyone else does, will I get what I actually want? The answer was always no." data-hi="हर कोई मुझे सरकारी नौकरी या वेतनभोगी पद की ओर धकेल रहा था। लेकिन मैं सोचता रहा: अगर मैं वही करूँ जो सब करते हैं, तो क्या मुझे वह मिलेगा जो मैं चाहता हूँ? जवाब हमेशा नहीं था।">Everyone pushed me toward a government job or salaried position. But I kept asking: if I do what everyone else does, will I get what I actually want? The answer was always no.</p></div>
+      <div class="card p-6 sm:p-8 rounded-xl group"><div class="w-12 h-12 rounded-lg flex items-center justify-center mb-5 tp" style="background:var(--bg-card-3)"><span class="material-symbols-outlined text-2xl">psychology</span></div><h3 class="font-headline text-lg font-bold mb-2 t1" data-en="Inner Battles" data-hi="आंतरिक संघर्ष">Inner Battles</h3><p class="t2 text-sm leading-relaxed" data-en="There were nights I questioned everything. Rejections piled up and confidence hit rock bottom. The real work was always internal — rebuilding my mindset, reading books, attending seminars." data-hi="ऐसी रातें आईं जब मैंने सब पर सवाल उठाया। अस्वीकृतियाँ बढ़ती गईं और आत्मविश्वास डगमगाया। असली काम हमेशा अंदर था — मानसिकता को फिर से बनाना।">There were nights I questioned everything. Rejections piled up and confidence hit rock bottom. The real work was always internal — rebuilding my mindset, reading books, attending seminars.</p></div>
+    </div>
+    <div class="mt-8 rounded-2xl p-6 sm:p-8 text-center" style="background:var(--badge-bg);border:1px solid var(--badge-border)">
+      <p class="text-base sm:text-xl font-bold t1 leading-relaxed max-w-3xl mx-auto" data-en='My turning point? The day I stopped asking "Will this work?" and started asking "How do I make this work?" — that one mental shift changed everything.' data-hi='मेरा転換बिंदु? जिस दिन मैंने "क्या यह काम करेगा?" पूछना बंद किया और "मैं इसे कैसे काम कराऊं?" पूछना शुरू किया — उस एक मानसिक बदलाव ने सब बदल दिया।'>My turning point? The day I stopped asking <em class="tp">"Will this work?"</em> and started asking <em class="tp">"How do I make this work?"</em> — that one mental shift changed everything.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ JOURNEY ═══ -->
+<section class="py-16 sm:py-24" style="background:var(--bg)" id="journey">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-12">
+      <span class="sec-label" data-en="Timeline" data-hi="समयरेखा">Timeline</span>
+      <h2 class="font-headline text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 t1" data-en="The Sovereign Journey" data-hi="संप्रभु यात्रा">The Sovereign Journey</h2>
+      <div class="w-20 h-1 mx-auto rounded" style="background:var(--primary)"></div>
+    </div>
+    <div class="max-w-2xl mx-auto">
+      <div class="relative pl-14 pb-10">
+        <div class="tl-line"></div>
+        <div class="absolute left-0 top-0 w-9 h-9 rounded-full btn-primary flex items-center justify-center font-headline font-black text-sm" style="ring:4px solid var(--bg)">1</div>
+        <span class="tp font-bold text-xs tracking-widest uppercase" data-en="2021 — The Beginning" data-hi="2021 — शुरुआत">2021 — The Beginning</span>
+        <h3 class="font-headline text-xl font-bold mt-1 mb-2 t1" data-en="Discovering AWPL" data-hi="AWPL की खोज">Discovering AWPL</h3>
+        <p class="t2 text-sm leading-relaxed" data-en="A friend introduced me to AWPL at a local seminar. I was skeptical, but curious. I researched for two weeks — checking certifications, reading testimonials. When I was confident it was real, I invested my first ₹5,000 and never looked back." data-hi="एक मित्र ने मुझे एक स्थानीय सेमिनार में AWPL से परिचित कराया। मैं संशयपूर्ण लेकिन उत्सुक था। दो सप्ताह शोध के बाद जब विश्वास हुआ कि यह असली है, तो मैंने पहले ₹5,000 लगाए और कभी पीछे मुड़कर नहीं देखा।">A friend introduced me to AWPL at a local seminar. I was skeptical, but curious. I researched for two weeks — checking certifications, reading testimonials. When I was confident it was real, I invested my first ₹5,000 and never looked back.</p>
+      </div>
+      <div class="relative pl-14 pb-10">
+        <div class="tl-line"></div>
+        <div class="absolute left-0 top-0 w-9 h-9 rounded-full btn-primary flex items-center justify-center font-headline font-black text-sm">2</div>
+        <span class="tp font-bold text-xs tracking-widest uppercase" data-en="2022 — First Results" data-hi="2022 — पहले परिणाम">2022 — First Results</span>
+        <h3 class="font-headline text-xl font-bold mt-1 mb-2 t1" data-en="First ₹10,000 Month" data-hi="पहला ₹10,000 का महीना">First ₹10,000 Month</h3>
+        <p class="t2 text-sm leading-relaxed" data-en="Eight months in, I earned my first ₹10,000 from AWPL — while still studying for my degree. It wasn't life-changing money yet, but it proved the system worked. That first cheque was more motivating than any salary, because I had earned it on my own terms." data-hi="आठ महीने में, मैंने AWPL से पहला ₹10,000 कमाया — पढ़ाई जारी रखते हुए। यह अभी जीवन बदलने वाली रकम नहीं थी, लेकिन इसने साबित किया कि सिस्टम काम करता है।">Eight months in, I earned my first ₹10,000 from AWPL — while still studying for my degree. It wasn't life-changing money yet, but it proved the system worked. That first cheque was more motivating than any salary, because I had earned it on my own terms.</p>
+      </div>
+      <div class="relative pl-14 pb-10">
+        <div class="tl-line"></div>
+        <div class="absolute left-0 top-0 w-9 h-9 rounded-full btn-primary flex items-center justify-center font-headline font-black text-sm">3</div>
+        <span class="tp font-bold text-xs tracking-widest uppercase" data-en="2023 — Breakthrough" data-hi="2023 — सफलता">2023 — Breakthrough</span>
+        <h3 class="font-headline text-xl font-bold mt-1 mb-2 t1" data-en="Building the Team" data-hi="टीम बनाना">Building the Team</h3>
+        <p class="t2 text-sm leading-relaxed" data-en="I shifted focus from personal sales to team-building. Within this year, my team crossed 50 active members. I was awarded Mastery Mentor status and attended my first national AWPL leadership summit in Delhi." data-hi="मैंने ध्यान व्यक्तिगत बिक्री से टीम बनाने पर केंद्रित किया। इस वर्ष में मेरी टीम 50 सक्रिय सदस्यों को पार कर गई। मुझे मास्टरी मेंटर का दर्जा दिया गया और मैं दिल्ली में पहले राष्ट्रीय AWPL नेतृत्व शिखर सम्मेलन में शामिल हुआ।">I shifted focus from personal sales to team-building. Within this year, my team crossed 50 active members. I was awarded Mastery Mentor status and attended my first national AWPL leadership summit in Delhi.</p>
+      </div>
+      <div class="relative pl-14 pb-10">
+        <div class="tl-line"></div>
+        <div class="absolute left-0 top-0 w-9 h-9 rounded-full btn-primary flex items-center justify-center font-headline font-black text-sm">4</div>
+        <span class="tp font-bold text-xs tracking-widest uppercase" data-en="2024 — Diamond Status" data-hi="2024 — डायमंड स्तर">2024 — Diamond Status</span>
+        <h3 class="font-headline text-xl font-bold mt-1 mb-2 t1" data-en="Diamond Circle Qualifier" data-hi="डायमंड सर्किल क्वालिफायर">Diamond Circle Qualifier</h3>
+        <p class="t2 text-sm leading-relaxed" data-en="My team crossed 100 active members. I qualified for AWPL's prestigious Diamond Circle — a rank achieved by less than 1% of all distributors in India. Monthly team revenue crossed ₹5 lakhs. I graduated with honors." data-hi="मेरी टीम 100 सक्रिय सदस्यों को पार कर गई। मैंने AWPL के प्रतिष्ठित डायमंड सर्किल के लिए क्वालिफाई किया — यह रैंक भारत में 1% से कम वितरकों को मिलती है। मासिक राजस्व ₹5 लाख को पार किया।">My team crossed 100 active members. I qualified for AWPL's prestigious Diamond Circle — a rank achieved by less than 1% of all distributors in India. Monthly team revenue crossed ₹5 lakhs. I graduated with honors.</p>
+      </div>
+      <div class="relative pl-14">
+        <div class="absolute left-0 top-0 w-9 h-9 rounded-full btn-primary flex items-center justify-center font-headline font-black text-sm" style="box-shadow:0 0 0 4px color-mix(in srgb,var(--primary) 25%,transparent)">5</div>
+        <span class="tp font-bold text-xs tracking-widest uppercase" data-en="2025 — Now & Beyond" data-hi="2025 — अभी और आगे">2025 — Now & Beyond</span>
+        <h3 class="font-headline text-xl font-bold mt-1 mb-2 t1" data-en="Scaling the Vision" data-hi="दृष्टि को विस्तार देना">Scaling the Vision</h3>
+        <p class="t2 text-sm leading-relaxed" data-en="Currently scaling toward 500+ team members across 10 states, launching a dedicated mentorship program, and building the next generation of Diamond leaders. The vision: a pan-India movement of financially free individuals who built it from nothing." data-hi="वर्तमान में 10 राज्यों में 500+ टीम सदस्यों की ओर बढ़ रहा हूँ, एक समर्पित मेंटरशिप कार्यक्रम शुरू कर रहा हूँ। दृष्टि: एक अखिल भारतीय आंदोलन जहाँ लोग शून्य से वित्तीय स्वतंत्रता बनाएं।">Currently scaling toward 500+ team members across 10 states, launching a dedicated mentorship program, and building the next generation of Diamond leaders. The vision: a pan-India movement of financially free individuals who built it from nothing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section class="py-16 sm:py-24" style="background:var(--bg-card-2)" id="services">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="sec-label" data-en="What I Offer" data-hi="मैं क्या देता हूँ">What I Offer</span>
+      <h2 class="font-headline text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 t1">
+        <span data-en="How I Can Help" data-hi="मैं कैसे मदद कर सकता हूँ">How I Can Help</span> <span class="tp"><span data-en="You" data-hi="आपको">You</span></span>
+      </h2>
+      <p class="t2 text-sm sm:text-base" data-en="Whether you want to start a business, grow your income, or transform your mindset — I have a path designed for you." data-hi="चाहे आप व्यवसाय शुरू करना चाहें, आय बढ़ाना चाहें, या मानसिकता बदलना चाहें — मेरे पास आपके लिए एक रास्ता है।">Whether you want to start a business, grow your income, or transform your mindset — I have a path designed for you.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="card rounded-2xl p-7 flex flex-col">
+        <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style="background:var(--badge-bg);border:1px solid var(--badge-border)"><span class="material-symbols-outlined tp text-3xl">person_add</span></div>
+        <h3 class="font-headline text-xl font-bold mb-3 t1" data-en="Join My AWPL Team" data-hi="मेरी AWPL टीम से जुड़ें">Join My AWPL Team</h3>
+        <p class="t2 text-sm leading-relaxed mb-6 flex-1" data-en="Start your own business under my direct mentorship. You get a proven onboarding process, personal guidance, training resources, and ongoing support to hit your first income milestone as fast as possible." data-hi="मेरी प्रत्यक्ष मार्गदर्शन में अपना व्यवसाय शुरू करें। एक सिद्ध ऑनबोर्डिंग प्रक्रिया, व्यक्तिगत मार्गदर्शन और निरंतर समर्थन पाएं।">Start your own business under my direct mentorship. You get a proven onboarding process, personal guidance, training resources, and ongoing support to hit your first income milestone as fast as possible.</p>
+        <ul class="space-y-2 mb-6">
+          <li class="flex items-center gap-2 text-sm t2"><span class="tp font-bold">✓</span><span data-en="Personal onboarding call" data-hi="व्यक्तिगत ऑनबोर्डिंग कॉल">Personal onboarding call</span></li>
+          <li class="flex items-center gap-2 text-sm t2"><span class="tp font-bold">✓</span><span data-en="Proven sales scripts & tools" data-hi="सिद्ध बिक्री स्क्रिप्ट और टूल">Proven sales scripts & tools</span></li>
+          <li class="flex items-center gap-2 text-sm t2"><span class="tp font-bold">✓</span><span data-en="Weekly team training sessions" data-hi="साप्ताहिक टीम प्रशिक्षण सत्र">Weekly team training sessions</span></li>
+          <li class="flex items-center gap-2 text-sm t2"><span class="tp font-bold">✓</span><span data-en="Direct WhatsApp access to me" data-hi="मुझसे सीधे WhatsApp पर संपर्क">Direct WhatsApp access to me</span></li>
+        </ul>
+        <a href="#contact" class="block text-center btn-primary py-3 rounded-lg text-sm" data-en="Start Today →" data-hi="आज शुरू करें →">Start Today →</a>
+      </div>
+      <div class="card rounded-2xl p-7 flex flex-col relative" style="border-color:var(--primary)">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 btn-primary px-4 py-1 rounded-full text-xs font-bold whitespace-nowrap" data-en="⭐ Most Popular" data-hi="⭐ सबसे लोकप्रिय">⭐ Most Popular</div>
+        <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style="background:var(--badge-bg);border:1px solid var(--badge-border)"><span class="material-symbols-outlined tp text-3xl">school</span></div>
+        <h3 class="font-headline text-xl font-bold mb-3 t1" data-en="1-on-1 Mentorship" data-hi="व्यक्तिगत मार्गदर्शन">1-on-1 Mentorship</h3>
+        <p class="t2 text-sm leading-relaxed mb-6 flex-1" data-en="Already in network marketing but stuck? Book a personal strategy session. We'll audit your current approach and build a concrete 90-day action plan to double your results." data-hi="पहले से नेटवर्क मार्केटिंग में हैं लेकिन फंस गए हैं? एक व्यक्तिगत रणनीति सत्र बुक करें। हम आपके वर्तमान दृष्टिकोण का ऑडिट करेंगे।">Already in network marketing but stuck? Book a personal strategy session. We'll audit your current approach and build a concrete 90-day action plan to double your results.</p>
+        <ul class="space-y-2 mb-6">
+          <li class="flex items-center gap-2 text-sm t2"><span class="tp font-bold">✓</span><span data-en="Full business audit" data-hi="पूर्ण व्यवसाय ऑडिट">Full business audit</span></li>
+          <li class="flex items-center gap-2 text-sm t2"><span class="tp font-bold">✓</span><span data-en="90-day growth roadmap" data-hi="90 दिन की विकास योजना">90-day growth roadmap</span></li>
+          <li class="flex items-center gap-2 text-sm t2"><span class="tp font-bold">✓</span><span data-en="Mindset & leadership coaching" data-hi="मानसिकता और नेतृत्व प्रशिक्षण">Mindset & leadership coaching</span></li>
+          <li class="flex items-center gap-2 text-sm t2"><span class="tp font-bold">✓</span><span data-en="Monthly follow-up sessions" data-hi="मासिक फॉलो-अप सत्र">Monthly follow-up sessions</span></li>
+        </ul>
+        <a href="https://wa.me/918279846180" target="_blank" rel="noopener" class="block text-center btn-primary py-3 rounded-lg text-sm" data-en="Book a Session →" data-hi="सत्र बुक करें →">Book a Session →</a>
+      </div>
+      <div class="card rounded-2xl p-7 flex flex-col">
+        <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style="background:var(--badge-bg);border:1px solid var(--badge-border)"><span class="material-symbols-outlined tp text-3xl">shopping_bag</span></div>
+        <h3 class="font-headline text-xl font-bold mb-3 t1" data-en="Shop AWPL Products" data-hi="AWPL उत्पाद खरीदें">Shop AWPL Products</h3>
+        <p class="t2 text-sm leading-relaxed mb-6 flex-1" data-en="Not interested in the business side yet? No problem. Benefit from AWPL's world-class health, wellness, and personal care products at special member prices through my referral." data-hi="अभी व्यवसाय में रुचि नहीं है? कोई बात नहीं। मेरे रेफरल के माध्यम से AWPL के उत्पाद विशेष सदस्य मूल्य पर पाएं।">Not interested in the business side yet? No problem. Benefit from AWPL's world-class health, wellness, and personal care products at special member prices through my referral.</p>
+        <ul class="space-y-2 mb-6">
+          <li class="flex items-center gap-2 text-sm t2"><span class="tp font-bold">✓</span><span data-en="Ayurvedic health supplements" data-hi="आयुर्वेदिक स्वास्थ्य पूरक">Ayurvedic health supplements</span></li>
+          <li class="flex items-center gap-2 text-sm t2"><span class="tp font-bold">✓</span><span data-en="Organic personal care range" data-hi="जैविक व्यक्तिगत देखभाल उत्पाद">Organic personal care range</span></li>
+          <li class="flex items-center gap-2 text-sm t2"><span class="tp font-bold">✓</span><span data-en="Agro & home care products" data-hi="कृषि और घरेलू देखभाल उत्पाद">Agro & home care products</span></li>
+          <li class="flex items-center gap-2 text-sm t2"><span class="tp font-bold">✓</span><span data-en="Member pricing + free delivery" data-hi="सदस्य मूल्य + निःशुल्क डिलीवरी">Member pricing + free delivery</span></li>
+        </ul>
+        <a href="https://wa.me/918279846180" target="_blank" rel="noopener" class="block text-center py-3 rounded-lg text-sm font-bold btn-ghost" data-en="Order Now →" data-hi="अभी ऑर्डर करें →">Order Now →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ACADEMICS ═══ -->
+<section class="py-16 sm:py-24 overflow-hidden" style="background:var(--bg)" id="academics">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 relative">
+    <div class="absolute -right-10 top-0 font-headline font-black pointer-events-none select-none leading-none" style="font-size:clamp(5rem,12vw,10rem);color:var(--text-1);opacity:.04" data-en="STUDY" data-hi="पढ़ाई">STUDY</div>
+    <span class="sec-label" data-en="Education" data-hi="शिक्षा">Education</span>
+    <h2 class="font-headline text-3xl sm:text-4xl font-extrabold mb-3 t1" data-en="Academic Foundations" data-hi="शैक्षणिक नींव">Academic Foundations</h2>
+    <p class="t2 text-sm sm:text-base max-w-xl mb-10" data-en="Education and entrepreneurship are not opposites — they're allies. My academic background gave me the frameworks; AWPL gave me the arena to apply them." data-hi="शिक्षा और उद्यमिता विरोधी नहीं हैं — वे सहयोगी हैं। मेरी शैक्षणिक पृष्ठभूमि ने मुझे ढाँचे दिए; AWPL ने उन्हें लागू करने का अखाड़ा।">Education and entrepreneurship are not opposites — they're allies. My academic background gave me the frameworks; AWPL gave me the arena to apply them.</p>
+    <div class="space-y-5">
+      <div class="card p-6 sm:p-8 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-4" style="border-left:4px solid var(--primary)">
+        <div><span class="tp font-bold text-xs tracking-widest" data-en="2022 — 2025" data-hi="2022 — 2025">2022 — 2025</span><h3 class="font-headline text-xl sm:text-2xl font-bold mt-1 t1" data-en="Bachelor of Science (Hons.)" data-hi="विज्ञान स्नातक (सम्मान)">Bachelor of Science (Hons.)</h3><p class="t2 text-sm mt-1" data-en="Major in Strategic Management & Marketing Ethics — built analytical thinking, consumer psychology, and business planning skills directly applicable to network marketing and leadership." data-hi="सामरिक प्रबंधन और विपणन नैतिकता में — विश्लेषणात्मक सोच, उपभोक्ता मनोविज्ञान और व्यवसाय योजना कौशल विकसित किए।">Major in Strategic Management & Marketing Ethics — built analytical thinking, consumer psychology, and business planning skills directly applicable to network marketing and leadership.</p></div>
+        <div class="flex-shrink-0 px-4 py-2 rounded-lg font-bold text-sm self-start md:self-auto" style="background:var(--accent-blue-bg);color:var(--accent-blue)" data-en="🎓 Graduated with Honors" data-hi="🎓 सम्मान के साथ उत्तीर्ण">🎓 Graduated with Honors</div>
+      </div>
+      <div class="card p-6 sm:p-8 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-4" style="border-left:4px solid var(--border)">
+        <div><span class="t3 font-bold text-xs tracking-widest" data-en="2018 — 2022" data-hi="2018 — 2022">2018 — 2022</span><h3 class="font-headline text-xl sm:text-2xl font-bold mt-1 t1" data-en="Higher Secondary Education (Class XII)" data-hi="उच्च माध्यमिक शिक्षा (कक्षा XII)">Higher Secondary Education (Class XII)</h3><p class="t2 text-sm mt-1" data-en="Commerce stream with Financial Accounting & Economics — built a foundation in understanding money, markets, and financial systems from an early age." data-hi="वित्तीय लेखांकन और अर्थशास्त्र के साथ वाणिज्य — धन, बाजारों और वित्तीय प्रणालियों को समझने की नींव बनाई।">Commerce stream with Financial Accounting & Economics — built a foundation in understanding money, markets, and financial systems from an early age.</p></div>
+        <div class="flex-shrink-0 px-4 py-2 rounded-lg font-bold text-sm self-start md:self-auto" style="background:var(--bg-card-3);color:var(--text-2)" data-en="Distinction" data-hi="विशेष योग्यता">Distinction</div>
+      </div>
+      <div class="card p-6 sm:p-8 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-4" style="border-left:4px solid color-mix(in srgb,var(--primary) 40%,transparent)">
+        <div><span class="tp font-bold text-xs tracking-widest" style="opacity:.7" data-en="2021 — Present" data-hi="2021 — वर्तमान">2021 — Present</span><h3 class="font-headline text-xl sm:text-2xl font-bold mt-1 t1" data-en="Certifications & Self-Development" data-hi="प्रमाणपत्र और आत्म-विकास">Certifications & Self-Development</h3><p class="t2 text-sm mt-1" data-en="AWPL Leadership Certification · Direct Selling Best Practices · Network Marketing Mastery Program · Sales Psychology & Consumer Behaviour" data-hi="AWPL नेतृत्व प्रमाणपत्र · डायरेक्ट सेलिंग सर्वोत्तम प्रथाएं · नेटवर्क मार्केटिंग मास्टरी प्रोग्राम · बिक्री मनोविज्ञान">AWPL Leadership Certification · Direct Selling Best Practices · Network Marketing Mastery Program · Sales Psychology & Consumer Behaviour</p></div>
+        <div class="flex-shrink-0 px-4 py-2 rounded-lg font-bold text-sm self-start md:self-auto tp" style="background:var(--badge-bg);border:1px solid var(--badge-border)" data-en="Ongoing" data-hi="जारी">Ongoing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ACHIEVEMENTS ═══ -->
+<section class="py-16 sm:py-24" style="background:var(--bg-card-2)" id="achievements">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <span class="sec-label" data-en="By the Numbers" data-hi="संख्याओं में">By the Numbers</span>
+      <h2 class="font-headline text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 t1" data-en="3 Years. Real Results." data-hi="3 साल। असली नतीजे।">3 Years. Real Results.</h2>
+      <p class="t2 text-sm sm:text-base" data-en="These aren't projections. These are verified milestones from my active, growing network." data-hi="ये अनुमान नहीं हैं। ये मेरे सक्रिय, बढ़ते नेटवर्क के सत्यापित मील के पत्थर हैं।">These aren't projections. These are verified milestones from my active, growing network.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      <div class="sm:col-span-2 rounded-3xl p-8 sm:p-10 flex flex-col justify-between relative overflow-hidden group min-h-[260px] stat-primary" style="background:var(--primary);color:var(--on-primary)">
+        <div class="absolute -right-6 -top-6 font-black select-none" style="font-size:clamp(5rem,14vw,9rem);color:rgba(0,0,0,0.1)">01</div>
+        <div><h3 class="text-xs font-bold uppercase tracking-[.2em] mb-3" style="opacity:.7" data-en="Total Impact" data-hi="कुल प्रभाव">Total Impact</h3><p class="font-headline font-black mb-2 leading-none" style="font-size:clamp(2.5rem,8vw,4rem)">100+</p><p class="text-xl sm:text-2xl font-bold" style="opacity:.85" data-en="Active Network Leaders" data-hi="सक्रिय नेटवर्क लीडर">Active Network Leaders</p></div>
+        <p class="text-sm font-medium leading-relaxed mt-6" style="opacity:.7" data-en="Building across Uttar Pradesh, Delhi NCR, Haryana, Bihar, and Rajasthan — with new states being added every quarter." data-hi="उत्तर प्रदेश, दिल्ली NCR, हरियाणा, बिहार और राजस्थान में — हर तिमाही नए राज्य जुड़ रहे हैं।">Building across Uttar Pradesh, Delhi NCR, Haryana, Bihar, and Rajasthan — with new states being added every quarter.</p>
+      </div>
+      <div class="card rounded-3xl p-6 sm:p-8 flex flex-col justify-center text-center min-h-[140px]"><p class="font-headline text-4xl font-black tp mb-1">₹5L+</p><p class="t3 font-bold uppercase text-xs tracking-widest" data-en="Monthly Team Revenue" data-hi="मासिक टीम राजस्व">Monthly Team Revenue</p></div>
+      <div class="stat-alt rounded-3xl p-6 sm:p-8 flex flex-col justify-center text-center shadow-lg min-h-[140px]"><p class="font-headline text-4xl font-black mb-1" data-en="Top 1%" data-hi="शीर्ष 1%">Top 1%</p><p class="font-bold uppercase text-xs tracking-widest" style="opacity:.8" data-en="Diamond Rank All-India" data-hi="डायमंड रैंक अखिल भारत">Diamond Rank All-India</p></div>
+      <div class="card rounded-3xl p-6 sm:p-8 flex flex-col justify-center text-center min-h-[140px]"><p class="font-headline text-4xl font-black tp mb-1">3+</p><p class="t3 font-bold uppercase text-xs tracking-widest" data-en="Years Active & Growing" data-hi="वर्ष सक्रिय और बढ़ते हुए">Years Active & Growing</p></div>
+      <div class="card rounded-3xl p-6 sm:p-8 flex flex-col justify-center text-center min-h-[140px]"><p class="font-headline text-4xl font-black tp mb-1">5+</p><p class="t3 font-bold uppercase text-xs tracking-widest" data-en="States in the Network" data-hi="नेटवर्क में राज्य">States in the Network</p></div>
+      <div class="sm:col-span-2 card-3 rounded-3xl p-6 sm:p-8" style="background:var(--bg-card-3)">
+        <h4 class="font-headline text-lg font-bold mb-5 t1" data-en="My Expertise Stack" data-hi="मेरी विशेषज्ञता">My Expertise Stack</h4>
+        <div class="space-y-5">
+          <div><div class="flex justify-between mb-1.5"><span class="font-bold text-sm t1" data-en="Strategic Leadership" data-hi="रणनीतिक नेतृत्व">Strategic Leadership</span><span class="tp font-bold text-sm">95%</span></div><div class="skill-track"><div class="skill-fill" style="width:95%"></div></div></div>
+          <div><div class="flex justify-between mb-1.5"><span class="font-bold text-sm t1" data-en="Team Building & Duplication" data-hi="टीम निर्माण और दोहराव">Team Building & Duplication</span><span class="tp font-bold text-sm">92%</span></div><div class="skill-track"><div class="skill-fill" style="width:92%"></div></div></div>
+          <div><div class="flex justify-between mb-1.5"><span class="font-bold text-sm t1" data-en="Sales & Persuasion" data-hi="बिक्री और प्रेरण">Sales & Persuasion</span><span class="tp font-bold text-sm">88%</span></div><div class="skill-track"><div class="skill-fill" style="width:88%"></div></div></div>
+          <div><div class="flex justify-between mb-1.5"><span class="font-bold text-sm t1" data-en="Mindset Coaching" data-hi="मानसिकता प्रशिक्षण">Mindset Coaching</span><span class="tp font-bold text-sm">85%</span></div><div class="skill-track"><div class="skill-fill" style="width:85%"></div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 flex flex-wrap gap-3 justify-center">
+      <span class="chip" data-en="🏆 Diamond Circle Qualifier" data-hi="🏆 डायमंड सर्किल क्वालिफायर">🏆 Diamond Circle Qualifier</span>
+      <span class="chip" data-en="🌟 Mastery Mentor 2023" data-hi="🌟 मास्टरी मेंटर 2023">🌟 Mastery Mentor 2023</span>
+      <span class="chip" data-en="💡 Innovation Award 2024" data-hi="💡 इनोवेशन अवार्ड 2024">💡 Innovation Award 2024</span>
+      <span class="chip" data-en="📈 Top Recruiter Q3 2023" data-hi="📈 शीर्ष भर्तीकर्ता Q3 2023">📈 Top Recruiter Q3 2023</span>
+      <span class="chip" data-en="🎤 National Summit Speaker 2024" data-hi="🎤 राष्ट्रीय शिखर सम्मेलन वक्ता 2024">🎤 National Summit Speaker 2024</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="py-16 sm:py-24" style="background:var(--bg)" id="testimonials">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-12">
+      <span class="sec-label" data-en="Real Stories" data-hi="असली कहानियां">Real Stories</span>
+      <h2 class="font-headline text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 t1">
+        <span data-en="What My Team" data-hi="मेरी टीम">What My Team</span> <span class="tp"><span data-en="Says" data-hi="कहती है">Says</span></span>
+      </h2>
+      <p class="t2 text-sm sm:text-base max-w-xl mx-auto" data-en="Real people from my network whose lives have genuinely changed. Their words mean everything." data-hi="मेरे नेटवर्क के असली लोग जिनकी जिंदगी वाकई बदल गई।">Real people from my network whose lives have genuinely changed. Their words mean everything.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="card p-6 rounded-2xl flex flex-col"><div class="tp mb-4">★★★★★</div><p class="t2 text-sm leading-relaxed flex-1 italic mb-5" data-en='"Maine pehle kabhi socha nahi tha ki main ghar baithe ek business chala sakti hoon. Mayank bhai ki training se mujhe confidence aur ek clear system mila. Ab main ₹15,000 har mahine earn kar rahi hoon sirf 8 months mein."' data-hi='"मैंने पहले कभी नहीं सोचा था कि मैं घर बैठे एक व्यवसाय चला सकती हूँ। मयंक भाई की ट्रेनिंग से मुझे आत्मविश्वास और एक स्पष्ट सिस्टम मिला। अब मैं सिर्फ 8 महीनों में हर महीने ₹15,000 कमा रही हूँ।"'>"Maine pehle kabhi socha nahi tha ki main ghar baithe ek business chala sakti hoon. Mayank bhai ki training se mujhe confidence aur ek clear system mila. Ab main ₹15,000 har mahine earn kar rahi hoon sirf 8 months mein."</p><div class="flex items-center gap-3 pt-4" style="border-top:1px solid var(--border)"><div class="w-10 h-10 rounded-full flex items-center justify-center font-headline font-black text-sm" style="background:var(--badge-bg);color:var(--primary)">PD</div><div><p class="font-bold text-sm t1">Priya Devi</p><p class="t3 text-xs" data-en="Homemaker · Lucknow, UP" data-hi="गृहिणी · लखनऊ, UP">Homemaker · Lucknow, UP</p></div></div></div>
+      <div class="card p-6 rounded-2xl flex flex-col"><div class="tp mb-4">★★★★★</div><p class="t2 text-sm leading-relaxed flex-1 italic mb-5" data-en='"I was a college student with no money and no direction. Joining Mayank bhai\'s team gave me purpose and a side income that now covers my full college fees every semester. The mentorship is genuinely world-class."' data-hi='"मैं एक कॉलेज छात्र था जिसके पास न पैसा था, न दिशा। मयंक भाई की टीम से जुड़ने से मुझे उद्देश्य और एक साइड इनकम मिली जो अब हर सेमेस्टर मेरी पूरी फीस कवर करती है।"'>"I was a college student with no money and no direction. Joining Mayank bhai's team gave me purpose and a side income that now covers my full college fees every semester. The mentorship is genuinely world-class."</p><div class="flex items-center gap-3 pt-4" style="border-top:1px solid var(--border)"><div class="w-10 h-10 rounded-full flex items-center justify-center font-headline font-black text-sm" style="background:var(--accent-blue-bg);color:var(--accent-blue)">RK</div><div><p class="font-bold text-sm t1">Rahul Kumar</p><p class="t3 text-xs" data-en="Student · Meerut, UP" data-hi="छात्र · मेरठ, UP">Student · Meerut, UP</p></div></div></div>
+      <div class="card p-6 rounded-2xl flex flex-col"><div class="tp mb-4">★★★★★</div><p class="t2 text-sm leading-relaxed flex-1 italic mb-5" data-en='"After losing my job in 2023, I was desperate. A friend referred me to Mayank. Within 6 months I built a team of 20 people and replaced my entire lost salary. AWPL products are genuine and Mayank\'s leadership is exceptional."' data-hi='"2023 में नौकरी जाने के बाद, मैं हताश था। एक दोस्त ने मुझे मयंक के पास भेजा। 6 महीने में मैंने 20 लोगों की टीम बनाई और अपनी पूरी खोई सैलरी को बदल दिया।"'>"After losing my job in 2023, I was desperate. A friend referred me to Mayank. Within 6 months I built a team of 20 people and replaced my entire lost salary. AWPL products are genuine and Mayank's leadership is exceptional."</p><div class="flex items-center gap-3 pt-4" style="border-top:1px solid var(--border)"><div class="w-10 h-10 rounded-full flex items-center justify-center font-headline font-black text-sm" style="background:color-mix(in srgb,#ff9961 20%,transparent);color:#7a3000">AS</div><div><p class="font-bold text-sm t1">Amit Sharma</p><p class="t3 text-xs" data-en="Ex-Corporate · Delhi NCR" data-hi="पूर्व कॉर्पोरेट · दिल्ली NCR">Ex-Corporate · Delhi NCR</p></div></div></div>
+      <div class="card p-6 rounded-2xl flex flex-col"><div class="tp mb-4">★★★★★</div><p class="t2 text-sm leading-relaxed flex-1 italic mb-5" data-en='"Pehle main bahut negative tha network marketing ke baare mein. Mayank bhai ne patience se mujhe sab samjhaya, company ke documents dikhaye. Aaj main khud 12 logon ka team lead kar raha hoon."' data-hi='"पहले मैं नेटवर्क मार्केटिंग के बारे में बहुत नकारात्मक था। मयंक भाई ने धैर्य से मुझे सब समझाया। आज मैं खुद 12 लोगों की टीम का नेतृत्व कर रहा हूँ।"'>"Pehle main bahut negative tha network marketing ke baare mein. Mayank bhai ne patience se mujhe sab samjhaya, company ke documents dikhaye. Aaj main khud 12 logon ka team lead kar raha hoon."</p><div class="flex items-center gap-3 pt-4" style="border-top:1px solid var(--border)"><div class="w-10 h-10 rounded-full flex items-center justify-center font-headline font-black text-sm" style="background:var(--badge-bg);color:var(--primary)">SV</div><div><p class="font-bold text-sm t1">Suresh Verma</p><p class="t3 text-xs" data-en="Shopkeeper · Ghaziabad, UP" data-hi="दुकानदार · गाजियाबाद, UP">Shopkeeper · Ghaziabad, UP</p></div></div></div>
+      <div class="card p-6 rounded-2xl flex flex-col"><div class="tp mb-4">★★★★★</div><p class="t2 text-sm leading-relaxed flex-1 italic mb-5" data-en='"What sets Mayank apart is his honesty. He never promises overnight riches. He told me it would take 12-18 months of hard work, and that\'s exactly what it took. Now I have a real, sustainable income I can count on every month."' data-hi='"मयंक को अलग बनाती है उनकी ईमानदारी। वे कभी रातोंरात अमीर बनने का वादा नहीं करते। उन्होंने कहा था कि 12-18 महीने की मेहनत लगेगी — और बिल्कुल वैसा ही हुआ।"'>"What sets Mayank apart is his honesty. He never promises overnight riches. He told me it would take 12-18 months of hard work, and that's exactly what it took. Now I have a real, sustainable income I can count on every month."</p><div class="flex items-center gap-3 pt-4" style="border-top:1px solid var(--border)"><div class="w-10 h-10 rounded-full flex items-center justify-center font-headline font-black text-sm" style="background:var(--accent-blue-bg);color:var(--accent-blue)">NK</div><div><p class="font-bold text-sm t1">Neha Kapoor</p><p class="t3 text-xs" data-en="Teacher · Noida, UP" data-hi="शिक्षिका · नोएडा, UP">Teacher · Noida, UP</p></div></div></div>
+      <div class="rounded-2xl p-6 flex flex-col items-center justify-center text-center" style="background:var(--badge-bg);border:1px solid var(--badge-border)">
+        <span class="material-symbols-outlined tp text-4xl mb-4">add_circle</span>
+        <h4 class="font-headline text-lg font-bold mb-3 t1" data-en="Your Story Could Be Next" data-hi="अगली कहानी आपकी हो सकती है">Your Story Could Be Next</h4>
+        <p class="t2 text-sm leading-relaxed mb-5" data-en="Join my team and start writing your own success story. The first step is just a conversation away." data-hi="मेरी टीम से जुड़ें और अपनी सफलता की कहानी लिखना शुरू करें।">Join my team and start writing your own success story. The first step is just a conversation away.</p>
+        <a href="https://wa.me/918279846180" target="_blank" rel="noopener" class="inline-flex items-center gap-2 btn-primary px-5 py-2.5 rounded-lg text-sm" data-en="Talk to Mayank →" data-hi="मयंक से बात करें →">Talk to Mayank →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="py-16 sm:py-24" style="background:var(--bg-card-2)">
+  <div class="max-w-3xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-12">
+      <span class="sec-label" data-en="Common Questions" data-hi="सामान्य प्रश्न">Common Questions</span>
+      <h2 class="font-headline text-3xl sm:text-4xl font-extrabold mb-4 t1">
+        <span data-en="Honest" data-hi="ईमानदार">Honest</span> <span class="tp"><span data-en="Answers" data-hi="जवाब">Answers</span></span>
+      </h2>
+      <p class="t2 text-sm sm:text-base" data-en="I believe in full transparency. Here are the questions I get asked the most — answered directly." data-hi="मैं पूर्ण पारदर्शिता में विश्वास करता हूँ। यहाँ वे प्रश्न हैं जो मुझसे सबसे अधिक पूछे जाते हैं।">I believe in full transparency. Here are the questions I get asked the most — answered directly.</p>
+    </div>
+    <div class="space-y-4">
+      <div class="card rounded-xl overflow-hidden">
+        <button class="faq-btn w-full text-left px-6 py-4 font-bold text-sm sm:text-base flex justify-between items-center gap-4" onclick="toggleFaq(this)"><span class="t1" data-en="Is AWPL a scam or a legitimate business?" data-hi="क्या AWPL एक घोटाला है या एक वैध व्यवसाय?">Is AWPL a scam or a legitimate business?</span><span class="material-symbols-outlined tp flex-shrink-0 faq-icon">expand_more</span></button>
+        <div class="faq-body hidden px-6 pb-5"><p class="t2 text-sm leading-relaxed" data-en="AWPL is 100% legitimate. It is registered with the Ministry of Corporate Affairs, DPIIT-certified under India's Direct Selling Guidelines 2021, and an active member of the Indian Direct Selling Association (IDSA). Products are FSSAI and GMP certified. I would never risk my reputation on something illegal. Do your own research — you'll reach the same conclusion." data-hi="AWPL 100% वैध है। यह कॉर्पोरेट मामलों के मंत्रालय के साथ पंजीकृत है, भारत के डायरेक्ट सेलिंग दिशानिर्देश 2021 के तहत DPIIT-प्रमाणित है। उत्पाद FSSAI और GMP प्रमाणित हैं।">AWPL is 100% legitimate. It is registered with the Ministry of Corporate Affairs, DPIIT-certified under India's Direct Selling Guidelines 2021, and an active member of the Indian Direct Selling Association (IDSA). Products are FSSAI and GMP certified. I would never risk my reputation on something illegal. Do your own research — you'll reach the same conclusion.</p></div>
+      </div>
+      <div class="card rounded-xl overflow-hidden">
+        <button class="faq-btn w-full text-left px-6 py-4 font-bold text-sm sm:text-base flex justify-between items-center gap-4" onclick="toggleFaq(this)"><span class="t1" data-en="How much money can I realistically make?" data-hi="मैं यथार्थ रूप से कितना पैसा कमा सकता हूँ?">How much money can I realistically make?</span><span class="material-symbols-outlined tp flex-shrink-0 faq-icon">expand_more</span></button>
+        <div class="faq-body hidden px-6 pb-5"><p class="t2 text-sm leading-relaxed" data-en="Honest answer: results depend entirely on how much effort you put in. A part-time person working 1-2 hours/day can realistically earn ₹5,000–₹15,000/month within 6 months. A full-time dedicated person can scale to ₹50,000–₹1,00,000+ per month within 12-18 months. The system works — but only if you do." data-hi="ईमानदार जवाब: परिणाम पूरी तरह आपके प्रयास पर निर्भर करते हैं। 1-2 घंटे/दिन काम करने वाला अंशकालिक व्यक्ति 6 महीने में ₹5,000–₹15,000/माह कमा सकता है। पूर्णकालिक समर्पित व्यक्ति 12-18 महीनों में ₹50,000–₹1,00,000+ तक पहुँच सकता है।">Honest answer: results depend entirely on how much effort you put in. A part-time person working 1-2 hours/day can realistically earn ₹5,000–₹15,000/month within 6 months. A full-time dedicated person can scale to ₹50,000–₹1,00,000+ per month within 12-18 months. The system works — but only if you do.</p></div>
+      </div>
+      <div class="card rounded-xl overflow-hidden">
+        <button class="faq-btn w-full text-left px-6 py-4 font-bold text-sm sm:text-base flex justify-between items-center gap-4" onclick="toggleFaq(this)"><span class="t1" data-en="Do I need prior sales or marketing experience?" data-hi="क्या मुझे पहले से बिक्री का अनुभव चाहिए?">Do I need prior sales or marketing experience?</span><span class="material-symbols-outlined tp flex-shrink-0 faq-icon">expand_more</span></button>
+        <div class="faq-body hidden px-6 pb-5"><p class="t2 text-sm leading-relaxed" data-en="Absolutely not. I had zero experience when I started. My best team members include homemakers, students, retired individuals, and professionals with no prior sales background. What matters is your willingness to learn and be coachable. I'll teach you everything else." data-hi="बिल्कुल नहीं। जब मैंने शुरुआत की तो मेरे पास शून्य अनुभव था। मेरी सर्वश्रेष्ठ टीम के सदस्यों में गृहिणियां, छात्र, सेवानिवृत्त व्यक्ति और बिना बिक्री अनुभव के पेशेवर शामिल हैं।">Absolutely not. I had zero experience when I started. My best team members include homemakers, students, retired individuals, and professionals with no prior sales background. What matters is your willingness to learn and be coachable. I'll teach you everything else.</p></div>
+      </div>
+      <div class="card rounded-xl overflow-hidden">
+        <button class="faq-btn w-full text-left px-6 py-4 font-bold text-sm sm:text-base flex justify-between items-center gap-4" onclick="toggleFaq(this)"><span class="t1" data-en="Can I do this alongside my job or college?" data-hi="क्या मैं इसे नौकरी या कॉलेज के साथ कर सकता हूँ?">Can I do this alongside my job or college?</span><span class="material-symbols-outlined tp flex-shrink-0 faq-icon">expand_more</span></button>
+        <div class="faq-body hidden px-6 pb-5"><p class="t2 text-sm leading-relaxed" data-en="Yes — and I actually recommend starting that way. I built my entire foundation while studying full-time for my B.Sc. degree. AWPL is designed as a flexible, mobile-first business. You can work at 6am or 11pm — you set your schedule." data-hi="हाँ — और मैं वास्तव में इस तरह शुरू करने की सलाह देता हूँ। मैंने अपनी पूरी नींव B.Sc. की पढ़ाई करते हुए बनाई। AWPL एक लचीला, मोबाइल-फर्स्ट व्यवसाय है। आप सुबह 6 बजे या रात 11 बजे काम कर सकते हैं।">Yes — and I actually recommend starting that way. I built my entire foundation while studying full-time for my B.Sc. degree. AWPL is designed as a flexible, mobile-first business. You can work at 6am or 11pm — you set your schedule.</p></div>
+      </div>
+      <div class="card rounded-xl overflow-hidden">
+        <button class="faq-btn w-full text-left px-6 py-4 font-bold text-sm sm:text-base flex justify-between items-center gap-4" onclick="toggleFaq(this)"><span class="t1" data-en="How much does it cost to join?" data-hi="जुड़ने में कितना खर्च होता है?">How much does it cost to join?</span><span class="material-symbols-outlined tp flex-shrink-0 faq-icon">expand_more</span></button>
+        <div class="faq-body hidden px-6 pb-5"><p class="t2 text-sm leading-relaxed" data-en="AWPL's starter packages begin at a very affordable price point and include actual certified products — so your investment goes directly into product value, not just a registration fee. Message me on WhatsApp and I'll explain all current joining options transparently before you decide anything." data-hi="AWPL के स्टार्टर पैकेज बहुत किफायती मूल्य पर शुरू होते हैं और इसमें वास्तविक प्रमाणित उत्पाद शामिल हैं। WhatsApp पर मैसेज करें और मैं निर्णय से पहले सभी विकल्प पारदर्शी रूप से समझाऊंगा।">AWPL's starter packages begin at a very affordable price point and include actual certified products — so your investment goes directly into product value, not just a registration fee. Message me on WhatsApp and I'll explain all current joining options transparently before you decide anything.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section class="py-16 sm:py-24 nebula" style="background:var(--bg-card-2)" id="contact">
+  <div class="max-w-2xl mx-auto px-5 sm:px-8 text-center">
+    <span class="sec-label" data-en="Get In Touch" data-hi="संपर्क करें">Get In Touch</span>
+    <h2 class="font-headline text-3xl sm:text-4xl md:text-5xl font-extrabold mb-5 t1">
+      <span data-en="Ready to" data-hi="तैयार हैं">Ready to</span> <span class="tp"><span data-en="Change Your Life?" data-hi="अपनी जिंदगी बदलने के लिए?">Change Your Life?</span></span>
+    </h2>
+    <p class="t2 text-base sm:text-lg mb-10 leading-relaxed" data-en='The biggest mistake people make is waiting for the "right time." The right time is now. Reach out — I personally respond to every message, usually within 2 hours. No pressure, no obligation. Just an honest conversation about your goals.' data-hi='"सही समय" का इंतजार करना सबसे बड़ी गलती है। सही समय अभी है। मुझसे संपर्क करें — मैं व्यक्तिगत रूप से हर संदेश का जवाब देता हूँ, आमतौर पर 2 घंटे के भीतर।'>The biggest mistake people make is waiting for the "right time." The right time is now. Reach out — I personally respond to every message, usually within 2 hours. No pressure, no obligation. Just an honest conversation about your goals.</p>
+    <div class="space-y-5 mb-8">
+      <a href="tel:+918279846180" class="flex items-center gap-4 group justify-center">
+        <div class="contact-icon"><span class="material-symbols-outlined">call</span></div>
+        <div class="text-left"><p class="t3 text-xs font-bold uppercase tracking-widest" data-en="Call or WhatsApp" data-hi="कॉल या WhatsApp">Call or WhatsApp</p><p class="t1 text-lg sm:text-xl font-bold">+91 82798 46180</p></div>
+      </a>
+      <a href="mailto:toofanmail899@gmail.com" class="flex items-center gap-4 group justify-center">
+        <div class="contact-icon"><span class="material-symbols-outlined">alternate_email</span></div>
+        <div class="text-left"><p class="t3 text-xs font-bold uppercase tracking-widest" data-en="Email" data-hi="ईमेल">Email</p><p class="t1 text-base sm:text-xl font-bold break-all">toofanmail899@gmail.com</p></div>
+      </a>
+      <div class="flex items-center gap-4 justify-center">
+        <div class="contact-icon"><span class="material-symbols-outlined">location_on</span></div>
+        <div class="text-left"><p class="t3 text-xs font-bold uppercase tracking-widest" data-en="Location" data-hi="स्थान">Location</p><p class="t1 text-base sm:text-lg font-bold" data-en="Ghaziabad, Uttar Pradesh, India" data-hi="गाजियाबाद, उत्तर प्रदेश, भारत">Ghaziabad, Uttar Pradesh, India</p></div>
+      </div>
+    </div>
+    <div class="flex gap-4 mb-8 justify-center">
+      <a class="social-btn" href="https://www.instagram.com/imayankkumar9?igsh=OGo3OWlxd2Rtbm03" target="_blank" rel="noopener" aria-label="Instagram"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+      <a class="social-btn" href="https://www.facebook.com/share/1Lz1ezxDKC/" target="_blank" rel="noopener" aria-label="Facebook"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-2.254c0-.599.334-.746.858-.746h3.142v-4h-4.42c-2.84 0-4.58 1.364-4.58 4.046v2.954z"/></svg></a>
+    </div>
+    <a class="w-full inline-flex items-center justify-center gap-3 py-4 rounded-xl font-bold text-base sm:text-lg mb-3" href="https://wa.me/918279846180?text=Hi%20Mayank%20bhai%2C%20I%20want%20to%20know%20more%20about%20joining%20AWPL." target="_blank" rel="noopener" style="background:#25D366;color:#fff;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(37,211,102,0.25)" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+      <svg class="w-5 h-5 sm:w-6 sm:h-6 fill-current flex-shrink-0" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.888-11.888 3.176 0 6.161 1.237 8.404 3.48s3.481 5.229 3.481 8.408c0 6.556-5.332 11.888-11.888 11.888-2.003 0-3.963-.505-5.7-1.467l-6.305 1.701zm6.357-3.991c1.62.966 3.423 1.478 5.26 1.478 5.584 0 10.131-4.547 10.131-10.131s-4.547-10.132-10.131-10.132c-2.705 0-5.247 1.053-7.158 2.963-1.911 1.911-2.964 4.453-2.964 7.159 0 1.896.513 3.737 1.485 5.385l-1.002 3.654 3.739-.999zm11.366-8.221c-.312-.156-1.848-.912-2.134-1.017-.286-.104-.494-.156-.701.156-.207.312-.803 1.017-.984 1.223-.182.207-.364.233-.676.077-.312-.156-1.316-.484-2.507-1.547-.926-.826-1.551-1.846-1.733-2.158-.182-.312-.019-.481.137-.636.141-.14.312-.364.468-.546.156-.182.208-.312.312-.52.104-.208.052-.39-.026-.546-.078-.156-.701-1.688-.961-2.312-.253-.615-.512-.532-.701-.541-.182-.009-.39-.011-.598-.011s-.546.078-.831.39c-.286.312-1.091 1.066-1.091 2.6s1.117 3.016 1.273 3.224c.156.208 2.197 3.355 5.322 4.704.743.321 1.323.512 1.774.656.745.237 1.423.204 1.958.124.598-.089 1.848-.755 2.108-1.485.26-.73.26-1.353.182-1.485-.077-.132-.286-.208-.597-.364z"/></svg>
+      <span data-en="Message Me on WhatsApp" data-hi="WhatsApp पर मैसेज करें">Message Me on WhatsApp</span>
+    </a>
+    <p class="t3 text-xs" data-en="I personally reply to every message — usually within 2 hours." data-hi="मैं व्यक्तिगत रूप से हर संदेश का जवाब देता हूँ — आमतौर पर 2 घंटे के भीतर।">I personally reply to every message — usually within 2 hours.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="py-10 sm:py-14 px-5 sm:px-8" style="background:var(--bg-card-2);border-top:1px solid var(--border)">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-10">
+      <div>
+        <div class="font-headline font-black text-xl tp mb-3">THE❤️MAYANK</div>
+        <p class="t3 text-sm leading-relaxed" data-en="AWPL Diamond Circle Leader & Network Marketing Mentor. Helping ordinary people build extraordinary income across India." data-hi="AWPL डायमंड सर्किल लीडर और नेटवर्क मार्केटिंग मेंटर। भारत भर में सामान्य लोगों को असाधारण आय बनाने में मदद करना।">AWPL Diamond Circle Leader & Network Marketing Mentor. Helping ordinary people build extraordinary income across India.</p>
+      </div>
+      <div>
+        <h4 class="t1 font-bold text-sm mb-4 uppercase tracking-wider" data-en="Quick Links" data-hi="त्वरित लिंक">Quick Links</h4>
+        <div class="space-y-2">
+          <a class="block t3 hover:tp transition text-sm" href="#about" data-en="About Me" data-hi="मेरे बारे में">About Me</a>
+          <a class="block t3 hover:tp transition text-sm" href="#awpl" data-en="What is AWPL" data-hi="AWPL क्या है">What is AWPL</a>
+          <a class="block t3 hover:tp transition text-sm" href="#services" data-en="Services" data-hi="सेवाएं">Services</a>
+          <a class="block t3 hover:tp transition text-sm" href="#testimonials" data-en="Success Stories" data-hi="सफलता की कहानियां">Success Stories</a>
+          <a class="block t3 hover:tp transition text-sm" href="#contact" data-en="Contact" data-hi="संपर्क">Contact</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="t1 font-bold text-sm mb-4 uppercase tracking-wider" data-en="Connect" data-hi="जुड़ें">Connect</h4>
+        <div class="space-y-3">
+          <a class="flex items-center gap-2 t3 hover:tp transition text-sm" href="tel:+918279846180"><span class="material-symbols-outlined text-base">call</span>+91 82798 46180</a>
+          <a class="flex items-center gap-2 t3 hover:tp transition text-sm break-all" href="mailto:toofanmail899@gmail.com"><span class="material-symbols-outlined text-base flex-shrink-0">mail</span>toofanmail899@gmail.com</a>
+          <a class="flex items-center gap-2 t3 hover:tp transition text-sm" href="https://www.instagram.com/imayankkumar9" target="_blank" rel="noopener"><span class="material-symbols-outlined text-base">photo_camera</span>@imayankkumar9</a>
+        </div>
+      </div>
+    </div>
+    <div class="pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left" style="border-top:1px solid var(--border)">
+      <p class="t3 text-xs" style="opacity:.6" data-en="© 2025 Mayank Kumar. All rights reserved." data-hi="© 2025 मयंक कुमार। सभी अधिकार सुरक्षित।">© 2025 Mayank Kumar. All rights reserved.</p>
+      <p class="t3 text-xs max-w-md" style="opacity:.4" data-en="Disclaimer: Income results vary. Network marketing success requires consistent effort and is not guaranteed. Always do your own research before joining any business opportunity." data-hi="अस्वीकरण: आय परिणाम भिन्न होते हैं। नेटवर्क मार्केटिंग की सफलता के लिए निरंतर प्रयास आवश्यक है। कोई भी व्यवसाय अवसर में शामिल होने से पहले स्वयं शोध करें।">Disclaimer: Income results vary. Network marketing success requires consistent effort and is not guaranteed. Always do your own research before joining any business opportunity.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── THEME ──────────────────────────────────────
+const html = document.getElementById('html-root');
+let isDark = true;
+
+function applyTheme() {
+  if (isDark) {
+    html.classList.add('dark');
+    document.getElementById('theme-icon').textContent = 'light_mode';
+    document.getElementById('theme-label').textContent = 'Light';
+  } else {
+    html.classList.remove('dark');
+    document.getElementById('theme-icon').textContent = 'dark_mode';
+    document.getElementById('theme-label').textContent = 'Dark';
+  }
+}
+
+function toggleTheme() {
+  isDark = !isDark;
+  applyTheme();
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+}
+
+// Load saved theme
+const saved = localStorage.getItem('theme');
+if (saved) { isDark = saved === 'dark'; } applyTheme();
+
+// ── LANGUAGE ───────────────────────────────────
+let isEnglish = true;
+
+function applyLang() {
+  const lang = isEnglish ? 'en' : 'hi';
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const text = el.getAttribute('data-' + lang);
+    if (text) el.textContent = text;
+  });
+  document.getElementById('lang-label').textContent = isEnglish ? 'हिंदी' : 'English';
+  // Fix elements that have inner html spans we don't want to overwrite
+  // Re-apply special tp spans after lang switch
+}
+
+function toggleLang() {
+  isEnglish = !isEnglish;
+  applyLang();
+}
+
+// ── MOBILE MENU ────────────────────────────────
+function toggleMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const btn = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+document.addEventListener('click', e => {
+  const menu = document.getElementById('mobile-menu');
+  const btn = document.getElementById('hamburger');
+  if (!menu.contains(e.target) && !btn.contains(e.target) && menu.classList.contains('open')) {
+    menu.classList.remove('open');
+    btn.classList.remove('open');
+  }
+});
+
+// ── FAQ ────────────────────────────────────────
+function toggleFaq(btn) {
+  const body = btn.nextElementSibling;
+  const icon = btn.querySelector('.faq-icon');
+  const isOpen = !body.classList.contains('hidden');
+  document.querySelectorAll('.faq-body').forEach(b => b.classList.add('hidden'));
+  document.querySelectorAll('.faq-icon').forEach(i => i.style.transform = '');
+  if (!isOpen) { body.classList.remove('hidden'); icon.style.transform = 'rotate(180deg)'; }
+}
+</script>
+</body>
+</html>
